@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ルール説明</title>
+
+    <!-- Google Fontsのリンクを追加 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- インラインCSSでスタイルを設定 -->
+    <style>
+        body {
+            background-color: #a8e6a3; /* 背景色を明るめの緑に設定 */
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* ページ全体のフォントをPoppinsに設定 */
+            font-size: 1.5em; /* すべての文字を1.5倍大きく */
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif; /* フォントをPoppinsに設定 */
+            color: yellow; /* テキストの色を黄色に設定 */
+            text-align: center; /* 文字を中央揃え */
+            padding-top: 50px; /* 上に少し余白を追加 */
+        }
+
+        ol {
+            margin: 30px auto;
+            padding-left: 20px;
+            width: 80%;
+            text-align: left;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .center-button {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .center-button:hover {
+            background-color: #FF4500;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #FF4500;
+        }
+    </style>
+</head>
+<body>
+    <h1>ルール説明</h1>
+    <p>ルール：</p>
+    <ol>
+        <li>親はお題に沿って選択肢から自分なりの１～３位を決めます。</li>
+        <li>他の人は親が選んだ１～３位を予想しましょう。</li>
+        <li>１人ずつ予想を発表したら、親が順位を発表。１～３位の「選択肢」と「順位」が当たれば［サンレンタン］で６点ゲット！ １～３位の「選択肢」が当たれば［サンレンプク］で４点ゲット！ そのほかに［ニレンタン］［プクプク］［タン］と当たった内容で得点が決まります。</li>
+        <li>親を交代してこれをくり返し、一番得点が多い人の勝ち！</li>
+    </ol>
+    <form method="get" action="{{ url_for('home') }}">
+        <input type="submit" value="戻る">
+    </form>
+</body>
+</html>

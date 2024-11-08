@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>サンレンタン - 予想入力</title>
+
+    <!-- Google Fontsのリンクを追加 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- インラインCSSでスタイルを設定 -->
+    <style>
+        body {
+            background-color: #a8e6a3; /* 背景色を明るめの緑に設定 */
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* ページ全体のフォントをPoppinsに設定 */
+            font-size: 1.2em; /* すべての文字を1.5倍大きく */
+        }
+
+        h1, h2 {
+            font-family: 'Poppins', sans-serif; /* 見出しのフォントをPoppinsに設定 */
+            color: white; /* 見出しの文字色を黄色に設定 */
+            text-align: center; /* 文字を中央揃え */
+        }
+
+        ul {
+            padding-left: 0;
+            list-style-type: none;
+            text-align: center;
+        }
+
+        li {
+            font-size: 1.2em; /* リスト項目の文字を大きく */
+        }
+
+        label {
+            font-size: 1.2em; /* ラベルの文字を大きく */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.5em;
+            margin: 10px;
+            width: 60%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="submit"] {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #FF6347; /* ボタンの背景色 */
+            color: white; /* ボタン内の文字色 */
+            border: none; /* ボーダーなし */
+            border-radius: 5px; /* ボタンを丸くする */
+            cursor: pointer; /* ボタンのカーソルを変更 */
+            display: block;
+            margin: 20px auto; /* ボタンを中央に配置 */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #FF4500; /* ホバー時に色が変わる */
+        }
+
+        .number-box {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        .number-1 {
+            background-color: white;
+            color: black;
+        }
+        
+        .number-2 {
+            background-color: black;
+            color: white;
+        }
+        
+        .number-3 {
+            background-color: red;
+            color: white;
+        }
+        
+        .number-4 {
+            background-color: blue;
+            color: white;
+        }
+        
+        .number-5 {
+            background-color: yellow;
+            color: black;
+        }
+        
+        .number-6 {
+            background-color: green;
+            color: white;
+        }
+        
+        .number-7 {
+            background-color: orange;
+            color: white;
+        }        
+    </style>
+</head>
+<body>
+    <h1>{{ current_guesser }} の予想入力</h1>
+    <h2>お題: {{ game.topic }}</h2>
+    <ul>
+        {% for i, option in enumerate(game.options, 1) %}
+            <li>
+                <span class="number-box number-{{ i }}">{{ i }}</span> {{ option }}
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <form method="post">
+        <div>
+            <label for="guess_1">1位:</label>
+            <input type="text" id="guess_1" name="guess_1" required>
+        </div>
+        <div>
+            <label for="guess_2">2位:</label>
+            <input type="text" id="guess_2" name="guess_2" required>
+        </div>
+        <div>
+            <label for="guess_3">3位:</label>
+            <input type="text" id="guess_3" name="guess_3" required>
+        </div>
+        {% if game.guess_index < len(game.players) - 2 %}
+            <input type="submit" value="次へ">
+        {% else %}
+            <input type="submit" value="結果発表">
+        {% endif %}
+    </form>
+</body>
+</html>

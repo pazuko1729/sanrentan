@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ラウンド結果</title>
+
+    <!-- Google Fontsのリンクを追加 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- インラインCSSでスタイルを設定 -->
+    <style>
+        body {
+            background-color: #a8e6a3; /* 背景色を明るめの緑に設定 */
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* ページ全体のフォントをPoppinsに設定 */
+            font-size: 1.2em; /* すべての文字を1.5倍大きく */
+        }
+
+        h1, h2 {
+            font-family: 'Poppins', sans-serif; /* 見出しのフォントをPoppinsに設定 */
+            color: white; /* 見出しの文字色を黄色に設定 */
+            text-align: center; /* 文字を中央揃え */
+        }
+
+        ul, table {
+            width: 80%;
+            margin: 30px auto;
+            text-align: center;
+            list-style-type: none; /* リストの黒い点を消す */
+            padding-left: 0; /* リストの左の余白を消す */
+        }
+
+        li {
+            font-size: 1.2em; /* リスト項目の文字を大きく */
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            font-size: 1.2em;
+        }
+
+        th {
+            background-color: #FF6347; /* ヘッダーの背景色 */
+            color: white; /* ヘッダーの文字色 */
+        }
+
+        td {
+            background-color: #f4f4f4;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #FF6347; /* ボタンの背景色 */
+            color: white; /* ボタン内の文字色 */
+            border: none; /* ボーダーなし */
+            border-radius: 5px; /* ボタンを丸くする */
+            cursor: pointer; /* ボタンのカーソルを変更 */
+            display: block;
+            margin: 20px auto; /* ボタンを中央に配置 */
+        }
+
+        button:hover {
+            background-color: #FF4500; /* ホバー時に色が変わる */
+        }
+
+        .number-box {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        .number-1 {
+            background-color: white;
+            color: black;
+        }
+        
+        .number-2 {
+            background-color: black;
+            color: white;
+        }
+        
+        .number-3 {
+            background-color: red;
+            color: white;
+        }
+        
+        .number-4 {
+            background-color: blue;
+            color: white;
+        }
+        
+        .number-5 {
+            background-color: yellow;
+            color: black;
+        }
+        
+        .number-6 {
+            background-color: green;
+            color: white;
+        }
+        
+        .number-7 {
+            background-color: orange;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>ラウンド結果</h1>
+    <h2>親が入力した順位と選択肢:</h2>
+    <ul>
+        {% for i, (rank, option) in enumerate(correct_order_with_options, 1) %}
+            <li>
+                <span class="number-box number-{{ i }}">{{ i }}</span> {{ rank }} ({{ option }})
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <h2>プレイヤーの予想と得点:</h2>
+    <table>
+        <tr>
+            <th>プレイヤー</th>
+            <th>予想</th>
+            <th>選択肢</th>
+            <th>得点</th>
+        </tr>
+        {% for player, guess in guesses_with_options.items() %}
+            <tr>
+                <td>{{ player }}</td>
+                <td>
+                    {% for rank, option in guess %}
+                        <span class="number-box number-{{ rank }}">{{ rank }}</span>{% if not loop.last %} ▶ {% endif %}
+                    {% endfor %}
+                </td>
+                
+                <td>
+                    {% for rank, option in guess %}
+                        {{ option }}{% if not loop.last %}▶ {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ round_scores[player] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <form action="{{ url_for('continue_game') }}" method="get">
+        <button type="submit">ゲームを続ける</button>
+    </form>
+</body>
+</html>

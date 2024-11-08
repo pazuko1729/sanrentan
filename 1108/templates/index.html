@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>プレイヤーの設定</title>
+</head>
+<body>
+    <h1>プレイヤーの設定</h1>
+    <form method="post">
+        <label for="num_players">プレイヤーの人数を選択してください（3～6人）:</label>
+        <select name="num_players" id="num_players">
+            {% for i in range(3, 7) %}
+                <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+        <div id="player_names">
+            {% for i in range(1, 7) %}
+                <label for="player_name_{{ i }}">プレイヤー{{ i }}の名前:</label>
+                <input type="text" name="player_name_{{ i }}" id="player_name_{{ i }}">
+            {% endfor %}
+        </div>
+        <input type="submit" value="ゲーム開始">
+    </form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>全員の予測結果</title>
+
+    <!-- Google Fontsのリンクを追加 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- インラインCSSでスタイルを設定 -->
+    <style>
+        body {
+            background-color: #a8e6a3; /* 背景色を明るめの緑に設定 */
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* ページ全体のフォントをPoppinsに設定 */
+            font-size: 1.5em; /* すべての文字を1.5倍大きく */
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif; /* 見出しのフォントをPoppinsに設定 */
+            color: white; /* 見出しの文字色を黄色に設定 */
+            text-align: center; /* 文字を中央揃え */
+        }
+
+        table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            font-size: 1.5em;
+        }
+
+        th {
+            background-color: #FF6347; /* ヘッダーの背景色 */
+            color: white; /* ヘッダーの文字色 */
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            background-color: #FF6347; /* ボタンの背景色 */
+            color: white; /* ボタン内の文字色 */
+            border: none; /* ボーダーなし */
+            border-radius: 5px; /* ボタンを丸くする */
+            cursor: pointer; /* ボタンのカーソルを変更 */
+            display: block;
+            margin: 20px auto; /* ボタンを中央に配置 */
+        }
+
+        button:hover {
+            background-color: #FF4500; /* ホバー時に色が変わる */
+        }
+    </style>
+</head>
+<body>
+    <h1>全員の予測結果</h1>
+    <table>
+        <tr>
+            <th>プレイヤー</th>
+            <th>予測</th>
+            <th>選択肢</th>
+        </tr>
+        {% for player, guess in guesses_with_options.items() %}
+            <tr>
+                <td>{{ player }}</td>
+                <td>
+                    {% for rank, option in guess %}
+                        {{ rank }}{% if not loop.last %}▶{% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for rank, option in guess %}
+                        {{ option }}{% if not loop.last %}▶ {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <form action="{{ url_for('show_results') }}" method="get">
+        <button type="submit">答え合わせ</button>
+    </form>
+</body>
+</html>

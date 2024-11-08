@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレイヤー人数選択</title>
+
+    <!-- Google Fontsのリンクを追加 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- インラインCSSでスタイルを設定 -->
+    <style>
+        body {
+            background-color: #a8e6a3; /* 背景色を明るめの緑に設定 */
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* ページ全体のフォントをPoppinsに設定 */
+            font-size: 1.5em; /* すべての文字を1.5倍大きく */
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif; /* フォントをPoppinsに設定 */
+            color: white; /* テキストの色を黄色に設定 */
+            text-align: center; /* 文字を中央揃え */
+            padding-top: 50px; /* 上に少し余白を追加 */
+        }
+
+        form {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        label {
+            font-size: 1.5em; /* ラベルの文字サイズ */
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1.5em;
+            margin: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #FF4500;
+        }
+    </style>
+</head>
+<body>
+    <h1>プレイヤー人数を選択してください</h1>
+    <form method="post">
+        <label for="num_players">人数:</label>
+        <input type="number" id="num_players" name="num_players" required min="2" max="10">
+        <input type="submit" value="次へ">
+    </form>
+</body>
+</html>

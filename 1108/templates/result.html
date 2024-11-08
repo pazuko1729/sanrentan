@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>最終結果</title>
+
+    <!-- キラキラしたフォントのリンク -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <!-- インラインCSSでスタイルを設定 -->
+    <style>
+        body {
+            background-color: #a8e6a3; /* 背景色を明るめの緑に設定 */
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* ページ全体のフォントをPoppinsに設定 */
+            font-size: 1.5em; /* すべての文字を1.5倍大きく */
+            text-align: center; /* 文字を中央揃え */
+        }
+
+        h1, h2, h3 {
+            color: white; /* 見出しの文字色を白に設定 */
+        }
+
+        ul {
+            padding-left: 0;
+            list-style-type: none; /* リストの黒い点を消す */
+        }
+
+        li {
+            font-size: 1.5em; /* リスト項目の文字を大きく */
+        }
+
+        a {
+            color: white; /* リンクの文字色を白に設定 */
+            font-size: 1.5em;
+            text-decoration: none; /* リンクの下線を消す */
+        }
+
+        a:hover {
+            text-decoration: underline; /* ホバー時に下線を追加 */
+        }
+
+        /* 勝者のセクションをキラキラさせる */
+        .winner-section {
+            background-color: #ffcc00; /* 勝者背景色を黄色に設定 */
+            color: #ff4500; /* 勝者の文字色を赤に設定 */
+            padding: 30px; /* 周りに余白を追加 */
+            font-size: 2.5em; /* フォントサイズを大きく */
+            font-weight: bold; /* フォントを太く */
+            font-family: 'Dancing Script', cursive; /* キラキラしたフォントを使用 */
+            text-shadow: 0px 0px 10px rgba(255, 69, 0, 0.7), 0px 0px 20px rgba(255, 69, 0, 0.7), 0px 0px 30px rgba(255, 69, 0, 0.7); /* 文字に輝きを追加 */
+            border-radius: 15px; /* 背景に角丸を追加 */
+            letter-spacing: 2px; /* 文字間隔を少し広げる */
+        }
+    </style>
+</head>
+<body>
+    <h1>最終結果</h1>
+    
+    <!-- 勝者セクション -->
+    <div class="winner-section">
+        <h2>勝者: {{ winner }}</h2>
+    </div>
+
+    <h3>スコア:</h3>
+    <ul>
+        {% for player, score in scores.items() %}
+            <li>{{ player }}: {{ score }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('home') }}">トップへ戻る</a>
+</body>
+</html>
