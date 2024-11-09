@@ -13,7 +13,7 @@
             background-color: #a8e6a3; /* 背景色を明るめの緑に設定 */
             margin: 0;
             font-family: 'Poppins', sans-serif; /* ページ全体のフォントをPoppinsに設定 */
-            font-size: 1.2em; /* すべての文字を1.5倍大きく */
+            font-size: 1.0em; /* すべての文字を1.5倍大きく */
         }
 
         h1, h2 {
@@ -115,16 +115,16 @@
 </head>
 <body>
     <h1>ラウンド結果</h1>
-    <h2>親が入力した順位と選択肢:</h2>
+    <h2>親の回答</h2>
     <ul>
         {% for i, (rank, option) in enumerate(correct_order_with_options, 1) %}
             <li>
-                <span class="number-box number-{{ i }}">{{ i }}</span> {{ rank }} ({{ option }})
+                <label>{{ i }}位：</label><span class="number-box number-{{ rank }}">{{ rank }}</span> {{ option }}
             </li>
         {% endfor %}
     </ul>
     
-    <h2>プレイヤーの予想と得点:</h2>
+    <h2>プレイヤーの予想と得点</h2>
     <table>
         <tr>
             <th>プレイヤー</th>

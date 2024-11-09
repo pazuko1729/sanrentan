@@ -62,6 +62,14 @@
             background-color: #FF4500; /* ホバー時に色が変わる */
         }
 
+        select {
+            padding: 10px;
+            font-size: 1.0em;
+            margin: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
         .number-box {
             display: inline-block;
             width: 30px;
@@ -120,18 +128,42 @@
         {% endfor %}
     </ul>
     
-    <form method="post">
+    <form method="post" style="text-align: center;">
         <div>
             <label for="guess_1">1位:</label>
-            <input type="text" id="guess_1" name="guess_1" required>
+            <select id="guess_1" name="guess_1" style="display: inline-block;">
+                <option value="1">1 : {{game.options[0]}}</option>
+                <option value="2">2 : {{game.options[1]}}</option>
+                <option value="3">3 : {{game.options[2]}}</option>
+                <option value="4">4 : {{game.options[3]}}</option>
+                <option value="5">5 : {{game.options[4]}}</option>
+                <option value="6">6 : {{game.options[5]}}</option>
+                <option value="7">7 : {{game.options[6]}}</option>
+            </select>
         </div>
         <div>
             <label for="guess_2">2位:</label>
-            <input type="text" id="guess_2" name="guess_2" required>
+            <select id="guess_2" name="guess_2" style="display: inline-block;">
+                <option value="1">1 : {{game.options[0]}}</option>
+                <option value="2">2 : {{game.options[1]}}</option>
+                <option value="3">3 : {{game.options[2]}}</option>
+                <option value="4">4 : {{game.options[3]}}</option>
+                <option value="5">5 : {{game.options[4]}}</option>
+                <option value="6">6 : {{game.options[5]}}</option>
+                <option value="7">7 : {{game.options[6]}}</option>
+            </select>
         </div>
         <div>
             <label for="guess_3">3位:</label>
-            <input type="text" id="guess_3" name="guess_3" required>
+            <select id="guess_3" name="guess_3" style="display: inline-block;">
+                <option value="1">1 : {{game.options[0]}}</option>
+                <option value="2">2 : {{game.options[1]}}</option>
+                <option value="3">3 : {{game.options[2]}}</option>
+                <option value="4">4 : {{game.options[3]}}</option>
+                <option value="5">5 : {{game.options[4]}}</option>
+                <option value="6">6 : {{game.options[5]}}</option>
+                <option value="7">7 : {{game.options[6]}}</option>
+            </select>
         </div>
         {% if game.guess_index < len(game.players) - 2 %}
             <input type="submit" value="次へ">

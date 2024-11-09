@@ -78,6 +78,14 @@
             font-weight: bold;
             border-radius: 5px;
         }
+
+        select {
+            padding: 10px;
+            font-size: 1.0em;
+            margin: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
         
         .number-1 {
             background-color: white;
@@ -128,18 +136,42 @@
     </ul>
     
     <h3>{{ game.current_player }} は選択肢から1, 2, 3位を選んでください:</h3>
-    <form method="post">
+    <form method="post" style="text-align: center;">
         <div>
             <label for="rank_1">1位:</label>
-            <input type="text" id="rank_1" name="correct_order" required>
+            <select id="rank_1" name="correct_order" style="display: inline-block;">
+                <option value="1">1 : {{game.options[0]}}</option>
+                <option value="2">2 : {{game.options[1]}}</option>
+                <option value="3">3 : {{game.options[2]}}</option>
+                <option value="4">4 : {{game.options[3]}}</option>
+                <option value="5">5 : {{game.options[4]}}</option>
+                <option value="6">6 : {{game.options[5]}}</option>
+                <option value="7">7 : {{game.options[6]}}</option>
+            </select>
         </div>
         <div>
             <label for="rank_2">2位:</label>
-            <input type="text" id="rank_2" name="correct_order" required>
+            <select id="rank_2" name="correct_order" style="display: inline-block;">
+                <option value="1">1 : {{game.options[0]}}</option>
+                <option value="2">2 : {{game.options[1]}}</option>
+                <option value="3">3 : {{game.options[2]}}</option>
+                <option value="4">4 : {{game.options[3]}}</option>
+                <option value="5">5 : {{game.options[4]}}</option>
+                <option value="6">6 : {{game.options[5]}}</option>
+                <option value="7">7 : {{game.options[6]}}</option>
+            </select>
         </div>
         <div>
             <label for="rank_3">3位:</label>
-            <input type="text" id="rank_3" name="correct_order" required>
+            <select id="rank_3" name="correct_order" style="display: inline-block;">
+                <option value="1">1 : {{game.options[0]}}</option>
+                <option value="2">2 : {{game.options[1]}}</option>
+                <option value="3">3 : {{game.options[2]}}</option>
+                <option value="4">4 : {{game.options[3]}}</option>
+                <option value="5">5 : {{game.options[4]}}</option>
+                <option value="6">6 : {{game.options[5]}}</option>
+                <option value="7">7 : {{game.options[6]}}</option>
+            </select>
         </div>
         <input type="submit" value="次へ">
     </form>

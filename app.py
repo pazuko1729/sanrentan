@@ -33,21 +33,21 @@ class SanrentanGame:
         self.options = options
         self.select_random_parent()
     
-    # def select_new_topic(self):
-    #     available_topics = [t for t in self.topics.keys() if t != self.previous_topic]
-    #     if not available_topics:  # 前回のお題以外がない場合、リセット
-    #         available_topics = list(self.topics.keys())
-    #     topic = random.choice(available_topics)
-    #     self.previous_topic = topic  # 選んだお題を保存
-    #     self.topic = topic
-    #     self.options = self.topics[topic]
+    def select_new_topic(self):
+        available_topics = [t for t in self.topics.keys() if t != self.previous_topic]
+        if not available_topics:  # 前回のお題以外がない場合、リセット
+            available_topics = list(self.topics.keys())
+        topic = random.choice(available_topics)
+        self.previous_topic = topic  # 選んだお題を保存
+        self.topic = topic
+        self.options = self.topics[topic]
 
     def select_random_parent(self):
         self.current_player = random.choice(self.players)
         
     def next_round(self):
         if self.current_round < self.rounds:
-            # self.select_new_topic()  # 新しいお題を選ぶ
+            self.select_new_topic()  # 新しいお題を選ぶ
             remaining_players = [p for p in self.players if p != self.current_player]
             self.current_player = random.choice(remaining_players)
             self.current_round += 1
@@ -176,7 +176,9 @@ def player_names():
                   "落ち込んだ時の対処法は？": ["美味しいごはんを食べる", "カラオケで歌う", "友人・知人に相談する", "体を動かす", "自然に触れる", "とにかく寝る", "映画を見たり、本を読んだりする"],
                   "旅行でイラっとするのは？": ["自分が運転している助手席でいびきかいて寝てる", "旅行中ずっと天気が悪い", "レストランで自分の食べていメニューが売り切れ", 
                     "みんなが適当に置いたせいで自分の歯ブラシやタオルがわからない", "目当ての飲食店が定休日", "チェックアウトの時間になって準備を始める友達", "スマホの充電器を忘れた"],
-                  "立ち直れないのは？": ["推しが活動休止した", "恋人から一日返信がない", "財布を無くした", "同窓会に呼ばれなかった", "旅行直前に体調不良", "お気に入りの服にソースをこぼした", "スマホを落として画面が割れた"]}
+                  "立ち直れないのは？": ["推しが活動休止した", "恋人から一日返信がない", "財布を無くした", "同窓会に呼ばれなかった", "旅行直前に体調不良", "お気に入りの服にソースをこぼした", "スマホを落として画面が割れた"],
+                  "泣いてしまうのは？": ["生き別れた兄弟が再会する", "甲子園で負けた球児たちに監督が話す", "結婚式で新婦が父親と歩く", "ペットと飼い主が死別する", "小さな子が初めておつかいをする",
+                                "好きなお笑い芸人がコンテストで優勝する", "漫画でキャラが誰かをかばって死亡する"]}
         game = SanrentanGame(players, topics)
         game.start_game()
         save_game_to_session(game)
